@@ -59,3 +59,6 @@ crashlytics-build.properties
 # Some additional files and directories
 Backups/
 Bitcoin Crush backuped files/
+
+# VSCode folder
+.vscode/
