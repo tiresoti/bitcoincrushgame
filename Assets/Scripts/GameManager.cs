@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
 	
     private float score;
     private int maxLives = 3;
-    private float[] xPosition = { -13, 13 };
-    private float[] yPosition = { 4.3f, 8.6f };
+    private float[] xCoinPosition = { -13, 13 };
+    private float[] yCoinPosition = { 4.3f, 8.6f };
 
 
     public void StartGame()
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
 
     Vector3 GetRandomPosition()
     {
-        return new Vector3(xPosition[Random.Range(0, xPosition.Length)], yPosition[Random.Range(0, yPosition.Length)]);
+        return new Vector3(xCoinPosition[Random.Range(0, xCoinPosition.Length)], yCoinPosition[Random.Range(0, yCoinPosition.Length)]);
     }
 
 }
