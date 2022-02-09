@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private GameManager gameManager;
 
+    // Variables for player's position (4 combinations total) and rotation (2 ways)
+    float xPos = 2.8f;
+    float yPos = 0.96f;
+    Quaternion leftRotation = new Quaternion(-0.2f, -1.0f, 0.0f, 0.0f);
+    Quaternion rightRotation = new Quaternion(0.0f, 0.0f, 0.2f, 1.0f);
+    
     int collisionCounter = 0; // This variable counts how many collisions happened
     [SerializeField] int interval = 5; // Interval between game difficulty increasings
     
@@ -28,13 +34,6 @@ public class PlayerController : MonoBehaviour
     // This method changes player's position and rotation based on keyboard input
     void MovePlayer()
     {
-        // Variables for player's position (4 combinations total) and rotation (2 ways)
-        float xPos = 2.8f;
-        float yPos = 0.96f;
-        Quaternion leftRotation = new Quaternion(-0.2f, -1.0f, 0.0f, 0.0f);
-        Quaternion rightRotation = new Quaternion(0.0f, 0.0f, 0.2f, 1.0f);
-
-        
         if (Input.GetKeyDown(KeyCode.Q)) // Left upper position
         {
             transform.position = new Vector3(-xPos, yPos);
