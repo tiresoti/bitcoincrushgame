@@ -36,10 +36,10 @@ public class GameManager : MonoBehaviour
 
 
     public void StartGame()
-	{
+    {
         isGameActive = true;
         livesLeft = maxLives;
-		score = 0;
+        score = 0;
         commission = 0.01f;
         UpdateScore(0);
         UpdateLife(0);
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         ShowGameElements(true);
         StartCoroutine(SpawnObjects());
-	}
+    }
 	
     public void ShowGameElements(bool isVisible)
     {
@@ -63,16 +63,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver()
-	{
+    {
         playerAudio.PlayOneShot(soundFXs[3], 0.7f);
-		isGameActive = false;
-		ShowGameElements(false);
+        isGameActive = false;
+        ShowGameElements(false);
 		
-		gameOverText.text = "Game Over! \n You've scored " + score + " BTC. Great job!";
-		gameOverText.gameObject.SetActive(true);
-		restartButton.gameObject.SetActive(true);
+        gameOverText.text = "Game Over! \n You've scored " + score + " BTC. Great job!";
+        gameOverText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
 		
-	}
+    }
 
     public void UpdateScore(float scoreToAdd)
     {
