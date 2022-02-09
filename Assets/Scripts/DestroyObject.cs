@@ -6,8 +6,7 @@ public class DestroyObject : MonoBehaviour
 {
     void Start()
     {
-        Destroy(gameObject, 2); // destroy particle after 2 seconds
+        Destroy(gameObject, 2); // Destroy particle after 2 seconds
     }
-
 
 }
