@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     float yPos = 0.96f;
     Quaternion leftRotation = new Quaternion(-0.2f, -1.0f, 0.0f, 0.0f);
     Quaternion rightRotation = new Quaternion(0.0f, 0.0f, 0.2f, 1.0f);
-    
+
     int collisionCounter = 0; // This variable counts how many collisions happened
     [SerializeField] int interval = 5; // Interval between game difficulty increasings
     
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        MovePlayer(); // Sadly it's impossible to detect key pressings in Unity as an event so gotta check in Update
+        MovePlayer();
     }
 
     // This method changes player's position and rotation based on keyboard input
@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Collisions detection: bitcoin or a powerup
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Coin"))
@@ -64,7 +63,7 @@ public class PlayerController : MonoBehaviour
             gameManager.playerAudio.PlayOneShot(gameManager.soundFXs[0], 0.7f);
             Destroy(collision.gameObject);
             Instantiate(explosionParticle[0], collision.transform.position, explosionParticle[0].transform.rotation);
-            gameManager.UpdateScore(gameManager.commission);
+            gameManager.UpdateScore(gameManager.commission / 100);
  
         } else if (collision.gameObject.CompareTag("Powerup"))
         {
@@ -84,7 +83,7 @@ public class PlayerController : MonoBehaviour
             Physics.gravity *= gravityModifier;
         }
         
-        // Interval between spawns decreases being multiplied by 0.8 every interval
+        // Interval between spawns decreases being multiplied by 0.8 every <interval> collisions
         if (collisionCounter % (interval * 2) == 0 && gameManager.spawnRate > 0.5f)
         {
             gameManager.spawnRate *= 0.8f;
@@ -93,7 +92,7 @@ public class PlayerController : MonoBehaviour
         // Commission also grows but it's not restricted
         if (collisionCounter % interval == 0)
         {
-            gameManager.commission += 0.01f;
+            gameManager.commission += 1;
         }
         
     }

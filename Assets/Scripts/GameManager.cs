@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         livesLeft = maxLives;
         score = 0;
-        commission = 0.01f;
+        commission = 1;
         UpdateScore(0);
         UpdateLife(0);
 		
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score + " BTC";
-        commissionText.text = "Commission: " + commission + " BTC";
+        commissionText.text = "Commission: " + (commission / 100) + " BTC";
     }
 
     public void UpdateLife(int livesToAdd)
