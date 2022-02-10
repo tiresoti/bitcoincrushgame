@@ -3183,7 +3183,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2085393755}
-        m_TargetAssemblyTypeName: DontDestroy, Assembly-CSharp
+        m_TargetAssemblyTypeName: MusicToggler, Assembly-CSharp
         m_MethodName: ToggleMusic
         m_Mode: 1
         m_Arguments:
@@ -3777,7 +3777,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2085393754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecce1b9b27023714685876a05a151d75, type: 3}
+  m_Script: {fileID: 11500000, guid: 6de85c33f6eae594ea57e3bad60453c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerMusic: {fileID: 2085393757}

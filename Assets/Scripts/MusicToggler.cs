@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DontDestroy : MonoBehaviour
+public class MusicToggler : MonoBehaviour
 {
     public AudioSource playerMusic;
     // private GameObject[] musicPlayers;
