@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject leftPlatforms;   // References to platforms that should appear/disappear
-    [SerializeField] GameObject rightPlatforms; // or slide in/out when the game starts/ends
+    [SerializeField] GameObject platforms;
     [SerializeField] GameObject player;
 
     [SerializeField] TextMeshProUGUI scoreText;
@@ -43,18 +42,16 @@ public class GameManager : MonoBehaviour
         commission = 1;
         UpdateScore(0);
         UpdateLife(0);
-		
-        titleScreen.gameObject.SetActive(false);
 
         ShowGameElements(true);
+        titleScreen.gameObject.SetActive(false);
+        ShowRestartScreenElements(false);
         StartCoroutine(SpawnObjects());
     }
 	
     public void ShowGameElements(bool isVisible)
     {
-        // Deactivating platforms should be probably replaced with moving them to visible part - future feature
-        leftPlatforms.gameObject.SetActive(isVisible);
-		rightPlatforms.gameObject.SetActive(isVisible);
+        platforms.gameObject.SetActive(isVisible);
 		player.gameObject.SetActive(isVisible);
         scoreText.gameObject.SetActive(isVisible);
         lifeText.gameObject.SetActive(isVisible);
@@ -62,15 +59,19 @@ public class GameManager : MonoBehaviour
         musicToggle.gameObject.SetActive(!isVisible);
     }
 
+    public void ShowRestartScreenElements(bool isVisible)
+    {
+        gameOverText.text = "Game Over! \n You've scored " + score + " BTC. Great job!";
+        gameOverText.gameObject.SetActive(isVisible);
+        restartButton.gameObject.SetActive(isVisible);
+    }
+
     public void GameOver()
     {
         playerAudio.PlayOneShot(soundFXs[3], 0.7f);
         isGameActive = false;
         ShowGameElements(false);
-		
-        gameOverText.text = "Game Over! \n You've scored " + score + " BTC. Great job!";
-        gameOverText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
+        ShowRestartScreenElements(true);
 		
     }
 
@@ -94,11 +95,12 @@ public class GameManager : MonoBehaviour
         if (livesLeft == 0) GameOver();
     }
 
-    public void RestartGame()
-    {
-        PlayButtonSound(); // I had to put it here because restart button reloads the scene too quickly
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    // public void RestartGame()
+    // {
+    //     PlayButtonSound(); // I had to put it here because restart button reloads the scene too quickly
+    //     //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //     StartGame();
+    // }
 
     IEnumerator SpawnObjects()
     {
