@@ -25,9 +25,10 @@ public class GameManager : MonoBehaviour
     public AudioSource playerAudio;
 
     public bool isGameActive;
-    public float spawnRate = 2.5f;
+    public float spawnRate;
     public float commission;
 	
+    private PlayerController playerController;
     private float score;
     private int maxLives = 3;
     private float[] xCoinPosition = { -13, 13 };
@@ -44,10 +45,14 @@ public class GameManager : MonoBehaviour
         livesLeft = maxLives;
         score = 0;
         commission = 1;
+        spawnRate = 2.5f;
+
         UpdateScore(0);
         UpdateLife(0);
 
         ShowGameElements(true);
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        playerController.collisionCounter = 0;
         titleScreen.gameObject.SetActive(false);
         ShowRestartScreenElements(false);
         StartCoroutine(SpawnObjects());
@@ -76,7 +81,6 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         ShowGameElements(false);
         ShowRestartScreenElements(true);
-		
     }
 
     public void UpdateScore(float scoreToAdd)

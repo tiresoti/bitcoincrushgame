@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float gravityModifier = 1f;
-
     public List<ParticleSystem> explosionParticle;
-    private Rigidbody playerRb;
+    public int collisionCounter; // This variable counts how many collisions happened
     private GameManager gameManager;
 
     // Variables for player's position (4 combinations total) and rotation (2 ways)
@@ -16,14 +14,11 @@ public class PlayerController : MonoBehaviour
     Quaternion leftRotation = new Quaternion(-0.2f, -1.0f, 0.0f, 0.0f);
     Quaternion rightRotation = new Quaternion(0.0f, 0.0f, 0.2f, 1.0f);
 
-    int collisionCounter = 0; // This variable counts how many collisions happened
     [SerializeField] int interval = 5; // Interval between game difficulty increasings
     
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        Physics.gravity *= gravityModifier;
     }
 
     void Update()
@@ -74,22 +69,15 @@ public class PlayerController : MonoBehaviour
         }
 
         // Game becomes harder as it progresses
-        // Each 50 collisions gravity intensifies and bitcoins/cookies roll faster
         collisionCounter++;
-        if (collisionCounter == 50)
-        {
-            collisionCounter = 0;
-            gravityModifier += 0.07f;
-            Physics.gravity *= gravityModifier;
-        }
-        
-        // Interval between spawns decreases being multiplied by 0.8 every <interval> collisions
+
+        // Interval between spawns decreases being multiplied by 0.8 every double <interval> collisions
         if (collisionCounter % (interval * 2) == 0 && gameManager.spawnRate > 0.5f)
         {
             gameManager.spawnRate *= 0.8f;
         }
 
-        // Commission also grows but it's not restricted
+        // Commission also grows every <interval> collisions
         if (collisionCounter % interval == 0)
         {
             gameManager.commission += 1;
