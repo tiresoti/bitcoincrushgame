@@ -34,8 +34,12 @@ public class GameManager : MonoBehaviour
     private float[] yCoinPosition = { 4.3f, 8.6f };
 
 
-    public void StartGame()
+    public void StartGame(bool firstLaunch)
     {
+        if (!firstLaunch)
+        {
+            Debug.Log("Game is restarted");
+        };
         isGameActive = true;
         livesLeft = maxLives;
         score = 0;
@@ -94,13 +98,6 @@ public class GameManager : MonoBehaviour
 
         if (livesLeft == 0) GameOver();
     }
-
-    // public void RestartGame()
-    // {
-    //     PlayButtonSound(); // I had to put it here because restart button reloads the scene too quickly
-    //     //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    //     StartGame();
-    // }
 
     IEnumerator SpawnObjects()
     {
