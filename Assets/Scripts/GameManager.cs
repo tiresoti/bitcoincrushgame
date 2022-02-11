@@ -37,10 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(bool firstLaunch)
     {
-        if (!firstLaunch)
-        {
-            Debug.Log("Game is restarted");
-        };
+        
         isGameActive = true;
         livesLeft = maxLives;
         score = 0;
@@ -55,7 +52,12 @@ public class GameManager : MonoBehaviour
         playerController.collisionCounter = 0;
         titleScreen.gameObject.SetActive(false);
         ShowRestartScreenElements(false);
-        StartCoroutine(SpawnObjects());
+        if (firstLaunch)
+        {
+            ShowTutorial();
+            StartCoroutine(SpawnObjects());
+        }
+        else StartCoroutine(SpawnObjects());
     }
 	
     public void ShowGameElements(bool isVisible)
@@ -103,6 +105,10 @@ public class GameManager : MonoBehaviour
         if (livesLeft == 0) GameOver();
     }
 
+    void ShowTutorial()
+    {
+        //
+    }
     IEnumerator SpawnObjects()
     {
         while(isGameActive)
