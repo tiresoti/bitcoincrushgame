@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private PlayerController playerController;
     private float score;
     private int maxLives = 3;
+    private int tutorialStep = 0;
     private float[] xCoinPosition = { -13, 13 };
     private float[] yCoinPosition = { 4.3f, 8.6f };
 
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
         livesLeft = maxLives;
         score = 0;
         commission = 1;
-        spawnRate = 2.5f;
+        spawnRate = 3f;
 
         UpdateScore(0);
         UpdateLife(0);
@@ -54,8 +55,7 @@ public class GameManager : MonoBehaviour
         ShowRestartScreenElements(false);
         if (firstLaunch)
         {
-            ShowTutorial();
-            StartCoroutine(SpawnObjects());
+            ShowTutorial(0);
         }
         else StartCoroutine(SpawnObjects());
     }
@@ -105,9 +105,54 @@ public class GameManager : MonoBehaviour
         if (livesLeft == 0) GameOver();
     }
 
-    void ShowTutorial()
+    void ShowTutorial(int step)
     {
-        //
+        switch (step)
+        {
+            case 0:
+                Instantiate(targets[1], new Vector3(xCoinPosition[0], yCoinPosition[1]), targets[1].gameObject.transform.rotation);
+
+                StartCoroutine(DestroyObstacleIfPlayerReachesPosition(new Vector3(-playerController.xPos, playerController.yPos),
+                                                                        GameObject.Find("Tutorial/Left Upper Q Obstacle"),
+                                                                        GameObject.Find("Tutorial/Canvas/Pointer Q")));
+                break;
+            case 1:
+                Instantiate(targets[1], new Vector3(xCoinPosition[0], yCoinPosition[0]), targets[1].gameObject.transform.rotation);
+                StartCoroutine(DestroyObstacleIfPlayerReachesPosition(new Vector3(-playerController.xPos, -playerController.yPos - 2.5f),
+                                                                        GameObject.Find("Left Lower A Obstacle"),
+                                                                        GameObject.Find("Tutorial/Canvas/Pointer A")));
+                break;
+            case 2:
+                Instantiate(targets[1], new Vector3(xCoinPosition[1], yCoinPosition[1]), targets[1].gameObject.transform.rotation);
+                StartCoroutine(DestroyObstacleIfPlayerReachesPosition(new Vector3(playerController.xPos, playerController.yPos),
+                                                                        GameObject.Find("Right Upper P Obstacle"),
+                                                                        GameObject.Find("Tutorial/Canvas/Pointer P")));
+            break;
+            case 3:
+                Instantiate(targets[1], new Vector3(xCoinPosition[1], yCoinPosition[0]), targets[1].gameObject.transform.rotation);
+                StartCoroutine(DestroyObstacleIfPlayerReachesPosition(new Vector3(playerController.xPos, -playerController.yPos - 2.5f),
+                                                                        GameObject.Find("Right Lower L Obstacle"),
+                                                                        GameObject.Find("Tutorial/Canvas/Pointer L")));
+            break;
+            default:
+                StartCoroutine(SpawnObjects());
+            break;
+        }
+    }
+
+    IEnumerator DestroyObstacleIfPlayerReachesPosition(Vector3 requiredPosition, GameObject currentObstacle, GameObject currentPointer)
+    {
+        currentObstacle.gameObject.SetActive(true);
+        currentPointer.gameObject.SetActive(true);
+        while(GameObject.Find("Player").transform.position != requiredPosition)
+        {
+            yield return new WaitForSeconds(0.1f); 
+        }
+        Destroy(currentObstacle);
+        currentPointer.gameObject.SetActive(false);
+        
+        ShowTutorial(++tutorialStep);
+        yield break;
     }
     IEnumerator SpawnObjects()
     {
@@ -118,6 +163,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
         }
     }
+    
 
     public void PlayButtonSound()
     {

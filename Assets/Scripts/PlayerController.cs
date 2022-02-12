@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
 
     // Variables for player's position (4 combinations total) and rotation (2 ways)
-    float xPos = 2.8f;
-    float yPos = 0.96f;
+    public float xPos = 2.8f;
+    public float yPos = 0.96f;
     Quaternion leftRotation = new Quaternion(-0.2f, -1.0f, 0.0f, 0.0f);
     Quaternion rightRotation = new Quaternion(0.0f, 0.0f, 0.2f, 1.0f);
 

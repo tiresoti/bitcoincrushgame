@@ -635,7 +635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187252112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.85, y: 3.0999997, z: 0.42}
+  m_LocalPosition: {x: -6.36, y: 3.1899996, z: 0.42}
   m_LocalScale: {x: 2, y: 2, z: 0.44}
   m_Children: []
   m_Father: {fileID: 620881291}
@@ -661,7 +661,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187252112}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1636,7 +1636,7 @@ GameObject:
   - component: {fileID: 600157887}
   - component: {fileID: 600157886}
   m_Layer: 0
-  m_Name: Left Lower Q Obstacle
+  m_Name: Left Lower A Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1650,7 +1650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600157884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.85, y: -1.55, z: 0.42}
+  m_LocalPosition: {x: -6.36, y: -1.46, z: 0.42}
   m_LocalScale: {x: 2, y: 2, z: 0.44}
   m_Children: []
   m_Father: {fileID: 620881291}
@@ -1676,7 +1676,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600157884}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2063,6 +2063,7 @@ GameObject:
   - component: {fileID: 827268266}
   - component: {fileID: 827268268}
   - component: {fileID: 827268267}
+  - component: {fileID: 827268269}
   m_Layer: 5
   m_Name: Pointer A
   m_TagString: Untagged
@@ -2096,7 +2097,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827268265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2127,6 +2128,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827268265}
   m_CullTransparentMesh: 1
+--- !u!114 &827268269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827268265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adc90c2812488147a8b67310b04fa08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &851145815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,7 +2249,7 @@ GameObject:
   - component: {fileID: 886684411}
   - component: {fileID: 886684410}
   m_Layer: 0
-  m_Name: Right Upper Q Obstacle
+  m_Name: Right Upper P Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2250,7 +2263,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886684408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.03, y: 3.1, z: 0.42}
+  m_LocalPosition: {x: 2.25, y: 3.26, z: 0.42}
   m_LocalScale: {x: 2, y: 2, z: 0.44}
   m_Children: []
   m_Father: {fileID: 620881291}
@@ -2276,7 +2289,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886684408}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3375,6 +3388,7 @@ GameObject:
   - component: {fileID: 1495356657}
   - component: {fileID: 1495356659}
   - component: {fileID: 1495356658}
+  - component: {fileID: 1495356660}
   m_Layer: 5
   m_Name: Pointer P
   m_TagString: Untagged
@@ -3408,7 +3422,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495356656}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3439,6 +3453,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495356656}
   m_CullTransparentMesh: 1
+--- !u!114 &1495356660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495356656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adc90c2812488147a8b67310b04fa08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1555113470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3591,7 +3617,7 @@ GameObject:
   - component: {fileID: 1676877350}
   - component: {fileID: 1676877349}
   m_Layer: 0
-  m_Name: Right Lower Q Obstacle
+  m_Name: Right Lower L Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3605,7 +3631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676877347}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.09, y: -1.55, z: 0.42}
+  m_LocalPosition: {x: 2.3099997, y: -1.3, z: 0.42}
   m_LocalScale: {x: 2, y: 2, z: 0.44}
   m_Children: []
   m_Father: {fileID: 620881291}
@@ -3631,7 +3657,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676877347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3684,6 +3710,7 @@ GameObject:
   - component: {fileID: 1699363312}
   - component: {fileID: 1699363314}
   - component: {fileID: 1699363313}
+  - component: {fileID: 1699363315}
   m_Layer: 5
   m_Name: Pointer L
   m_TagString: Untagged
@@ -3717,7 +3744,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699363311}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3748,6 +3775,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699363311}
   m_CullTransparentMesh: 1
+--- !u!114 &1699363315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699363311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adc90c2812488147a8b67310b04fa08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1704310635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4955,7 +4994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6008431216904745799, guid: 527b3ce7a67fc7f4286f55c646e34abb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.96
+      value: -3.46
       objectReference: {fileID: 0}
     - target: {fileID: 6008431216904745799, guid: 527b3ce7a67fc7f4286f55c646e34abb, type: 3}
       propertyPath: m_LocalPosition.z
