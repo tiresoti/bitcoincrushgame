@@ -1,3 +1,5 @@
+// This script decreases lives count if a bitcoin falls on the ground
+// and destroys the object that has fallen
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +14,6 @@ public class GroundController : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
-    // This script decreases lives count if a bitcoin falls on the ground and destroys the object that has fallen
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Coin"))

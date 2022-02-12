@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI lifeText;
     [SerializeField] TextMeshProUGUI commissionText;
     [SerializeField] TextMeshProUGUI gameOverText;
+    [SerializeField] TextMeshProUGUI instructionsHintText;
     [SerializeField] GameObject titleScreen;
-    [SerializeField] Button startButton;
     [SerializeField] Button restartButton;
     [SerializeField] Toggle musicToggle;
     [SerializeField] int livesLeft;
@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     public List<GameObject> targets;
     public List<AudioClip> soundFXs;
     public AudioSource playerAudio;
-
     public bool isGameActive;
     public float spawnRate;
     public float commission;
@@ -35,10 +34,8 @@ public class GameManager : MonoBehaviour
     private float[] xCoinPosition = { -13, 13 };
     private float[] yCoinPosition = { 4.3f, 8.6f };
 
-
     public void StartGame(bool firstLaunch)
     {
-        
         isGameActive = true;
         livesLeft = maxLives;
         score = 0;
@@ -59,7 +56,7 @@ public class GameManager : MonoBehaviour
         }
         else StartCoroutine(SpawnObjects());
     }
-	
+
     public void ShowGameElements(bool isVisible)
     {
         platforms.gameObject.SetActive(isVisible);
@@ -75,6 +72,7 @@ public class GameManager : MonoBehaviour
         gameOverText.text = "Game Over! \n You've scored " + score + " BTC. Great job!";
         gameOverText.gameObject.SetActive(isVisible);
         restartButton.gameObject.SetActive(isVisible);
+        instructionsHintText.gameObject.SetActive(isVisible);
     }
 
     public void GameOver()
@@ -110,26 +108,34 @@ public class GameManager : MonoBehaviour
         switch (step)
         {
             case 0:
-                Instantiate(targets[1], new Vector3(xCoinPosition[0], yCoinPosition[1]), targets[1].gameObject.transform.rotation);
+                Instantiate(targets[1], new Vector3(xCoinPosition[0],
+                                                    yCoinPosition[1]),
+                                                    targets[1].gameObject.transform.rotation);
 
                 StartCoroutine(DestroyObstacleIfPlayerReachesPosition(new Vector3(-playerController.xPos, playerController.yPos),
                                                                         GameObject.Find("Tutorial/Left Upper Q Obstacle"),
                                                                         GameObject.Find("Tutorial/Canvas/Pointer Q")));
                 break;
             case 1:
-                Instantiate(targets[1], new Vector3(xCoinPosition[0], yCoinPosition[0]), targets[1].gameObject.transform.rotation);
+                Instantiate(targets[1], new Vector3(xCoinPosition[0],
+                                                    yCoinPosition[0]),
+                                                    targets[1].gameObject.transform.rotation);
                 StartCoroutine(DestroyObstacleIfPlayerReachesPosition(new Vector3(-playerController.xPos, -playerController.yPos - 2.5f),
                                                                         GameObject.Find("Left Lower A Obstacle"),
                                                                         GameObject.Find("Tutorial/Canvas/Pointer A")));
                 break;
             case 2:
-                Instantiate(targets[1], new Vector3(xCoinPosition[1], yCoinPosition[1]), targets[1].gameObject.transform.rotation);
+                Instantiate(targets[1], new Vector3(xCoinPosition[1],
+                                                    yCoinPosition[1]),
+                                                    targets[1].gameObject.transform.rotation);
                 StartCoroutine(DestroyObstacleIfPlayerReachesPosition(new Vector3(playerController.xPos, playerController.yPos),
                                                                         GameObject.Find("Right Upper P Obstacle"),
                                                                         GameObject.Find("Tutorial/Canvas/Pointer P")));
             break;
             case 3:
-                Instantiate(targets[1], new Vector3(xCoinPosition[1], yCoinPosition[0]), targets[1].gameObject.transform.rotation);
+                Instantiate(targets[1], new Vector3(xCoinPosition[1],
+                                                    yCoinPosition[0]),
+                                                    targets[1].gameObject.transform.rotation);
                 StartCoroutine(DestroyObstacleIfPlayerReachesPosition(new Vector3(playerController.xPos, -playerController.yPos - 2.5f),
                                                                         GameObject.Find("Right Lower L Obstacle"),
                                                                         GameObject.Find("Tutorial/Canvas/Pointer L")));
@@ -140,7 +146,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator DestroyObstacleIfPlayerReachesPosition(Vector3 requiredPosition, GameObject currentObstacle, GameObject currentPointer)
+    IEnumerator DestroyObstacleIfPlayerReachesPosition(Vector3 requiredPosition,
+                                                        GameObject currentObstacle,
+                                                        GameObject currentPointer)
     {
         currentObstacle.gameObject.SetActive(true);
         currentPointer.gameObject.SetActive(true);
@@ -163,7 +171,6 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
         }
     }
-    
 
     public void PlayButtonSound()
     {
@@ -174,5 +181,4 @@ public class GameManager : MonoBehaviour
     {
         return new Vector3(xCoinPosition[Random.Range(0, xCoinPosition.Length)], yCoinPosition[Random.Range(0, yCoinPosition.Length)]);
     }
-
 }
