@@ -4,8 +4,10 @@ I made it while studying Unity completely on my own.
 
 Catch bitcoins controlling the picker and score some commission for each. Bitcoins are quickly rolling down from platforms, so try not to miss them, it makes you lose a life! You have 3 lives in total, refillable by collecting powerups.
 
-Play in browser: https://play.unity.com/mg/other/webgl-builds-124839
+Play in browser: https://play.unity.com/mg/other/webgl-builds-150048
 Or here (may have sound problems): https://donnadina.itch.io/bitcoin-crush
+
+Latest update: 12.01.2022 - code refactored and a tutorial added
 
 This repository contains:
 - The game project itself

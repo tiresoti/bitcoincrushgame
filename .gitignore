@@ -51,6 +51,7 @@ sysinfo.txt
 
 # Builds
 *.apk
+*.unitypackage
 
 # Crashlytics generated file
 crashlytics-build.properties
@@ -60,6 +61,7 @@ Backups/
 Bitcoin Crush backuped files/
 Media/
 WebGL Builds/
+Unity Packages/
 connectwebgl.zip
 webgl_sharing
 
