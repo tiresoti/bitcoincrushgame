@@ -13,7 +13,7 @@ public class ShowImage : MonoBehaviour
     }
     IEnumerator DisplayImageWithDelay()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.8f);
         gameObject.GetComponent<Image>().enabled = true;
     }
 }

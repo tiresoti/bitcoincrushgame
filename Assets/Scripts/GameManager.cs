@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         livesLeft = maxLives;
         score = 0;
         commission = 1;
-        spawnRate = 3f;
+        spawnRate = 2.8f;
 
         UpdateScore(0);
         UpdateLife(0);

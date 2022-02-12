@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         // Interval between spawns decreases being multiplied by 0.8 every double <interval> collisions
         if (collisionCounter % (interval * 2) == 0 && gameManager.spawnRate > 0.5f)
         {
-            gameManager.spawnRate *= 0.8f;
+            gameManager.spawnRate *= 0.9f;
         }
         // Commission also grows every <interval> collisions
         if (collisionCounter % interval == 0)
